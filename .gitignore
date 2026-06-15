@@ -27,5 +27,6 @@ tmp
 private-*
 .env
 uv.lock
-
+anonymized-experiment-results
+anonymized-useagent-logs-and-evaluation.tar.gz
 

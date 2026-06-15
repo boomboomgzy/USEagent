@@ -10,8 +10,8 @@ MODEL_NAME=openai:gpt-5-mini
 INPUT_FILE="./resources/swe_verified_ids_shuffled.txt"
 
 # Config
-MAX=230              # 0 = all
-SKIP_DATAPOINTS=270     # skip first X datapoints (0 = none)
+MAX=230              # 最多跑~个任务（0=全跑）
+SKIP_DATAPOINTS=270     # 跳过前~个（断点续跑用）
 MAX_THREADS=15
 TIMEOUT_SECS=10800     # 0 = no timeout
 
@@ -20,7 +20,7 @@ TIMEOUT_SECS=10800     # 0 = no timeout
 if [[ "${1:-}" == "--build" ]]; then
   docker rm -f useagent-turbo-test 2>/dev/null || true
   if [[ "${2:-}" == "--rm-image" ]]; then docker image rm -f useagent-turbo:dev 2>/dev/null || true; fi
-  DOCKER_BUILDKIT=1 docker build --build-arg COMMIT_SHA="$(git rev-parse HEAD)" --ssh default -t useagent-turbo:dev .
+  DOCKER_BUILDKIT=1 docker build --build-arg COMMIT_SHA="$(git rev-parse HEAD)" -t useagent-turbo:dev .
 fi
 
 STAMP="$(date +'%F-%H-%M')"

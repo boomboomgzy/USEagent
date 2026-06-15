@@ -10,7 +10,7 @@ set +a
 if [[ "$1" == "--build" ]]; then
   docker rm -f useagent-turbo-test 2>/dev/null
   docker image rm -f useagent-turbo:dev 2>/dev/null
-  DOCKER_BUILDKIT=1 docker build --ssh default -t useagent-turbo:dev .
+  DOCKER_BUILDKIT=1 docker build  -t useagent-turbo:dev .
 fi
 
 TASK_DESC='What is the name of this software project/library?'

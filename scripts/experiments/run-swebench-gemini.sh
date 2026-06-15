@@ -20,7 +20,7 @@ TIMEOUT_SECS=10800     # 0 = no timeout
 if [[ "${1:-}" == "--build" ]]; then
   docker rm -f useagent-turbo-test 2>/dev/null || true
   if [[ "${2:-}" == "--rm-image" ]]; then docker image rm -f useagent-turbo:dev 2>/dev/null || true; fi
-  DOCKER_BUILDKIT=1 docker build --build-arg COMMIT_SHA="$(git rev-parse HEAD)" --ssh default -t useagent-turbo:dev .
+  DOCKER_BUILDKIT=1 docker build --build-arg COMMIT_SHA="$(git rev-parse HEAD)"  -t useagent-turbo:dev .
 fi
 
 STAMP="$(date +'%F-%H-%M')"

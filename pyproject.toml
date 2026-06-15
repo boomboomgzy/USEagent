@@ -37,8 +37,9 @@ dev = [
 ]
 
 usebench = [
-  "usebench @ git+ssh://git@github.com/nus-apr/use-bench.git@0a985ae"
+  "usebench @ git+https://github.com/nus-apr/USEbench.git@0a985ae"
 ]
+
 
 [tool.setuptools]
 include-package-data = true

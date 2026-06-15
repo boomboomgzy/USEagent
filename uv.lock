@@ -1,5 +1,5 @@
 version = 1
-revision = 2
+revision = 3
 requires-python = ">=3.12"
 
 [options]
@@ -2439,14 +2439,14 @@ requires-dist = [
     { name = "sentencepiece", specifier = ">=0.2.1" },
     { name = "tiktoken", specifier = ">=0.9.0" },
     { name = "unidiff", specifier = ">=0.7.5" },
-    { name = "usebench", marker = "extra == 'usebench'", git = "ssh://git@github.com/nus-apr/use-bench.git?rev=0a985ae" },
+    { name = "usebench", marker = "extra == 'usebench'", git = "https://github.com/nus-apr/USEbench.git?rev=0a985ae" },
 ]
 provides-extras = ["dev", "usebench"]
 
 [[package]]
 name = "usebench"
 version = "0.1.0"
-source = { git = "ssh://git@github.com/nus-apr/use-bench.git?rev=0a985ae#0a985ae7d99a5a3bde0cf1b863ebf36c8d2307d6" }
+source = { git = "https://github.com/nus-apr/USEbench.git?rev=0a985ae#0a985ae7d99a5a3bde0cf1b863ebf36c8d2307d6" }
 dependencies = [
     { name = "coverage" },
     { name = "datasets" },

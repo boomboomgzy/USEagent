@@ -17,7 +17,7 @@ if [[ "$1" == "--build" ]]; then
     #This will delete the image, but you will loose caching.
     docker image rm -f useagent-turbo:dev 2>/dev/null
   fi
-  DOCKER_BUILDKIT=1 docker build --build-arg BASE_IMAGE=$USEBENCH_BASE_IMAGE --ssh default -t useagent-turbo:dev .
+  DOCKER_BUILDKIT=1 docker build --build-arg BASE_IMAGE=$USEBENCH_BASE_IMAGE  -t useagent-turbo:dev .
 fi
 
 docker run --rm \

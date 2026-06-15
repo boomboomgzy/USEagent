@@ -18,17 +18,11 @@ ENV TZ=Asia/Singapore
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 ENV PATH="/root/.local/bin:${PATH}"
 
-RUN mkdir -p /root/.ssh && \
-    printf "Host github.com\nHostname ssh.github.com\nPort 443\nUser git\n" > /root/.ssh/config && \
-    chmod 600 /root/.ssh/config
-RUN ssh-keyscan -p 443 ssh.github.com >> /root/.ssh/known_hosts
-
 # First: Copy in dependencies & install them, to have them cached even if project src changes
 WORKDIR /src
 COPY pyproject.toml uv.lock* README.md /src/
 # conditionally install usebench based on build arg (creates /src/.venv)
-RUN --mount=type=ssh \
-  if [ "$USEBENCH_ENABLED" = "true" ]; then \
+RUN if [ "$USEBENCH_ENABLED" = "true" ]; then \
     uv sync --extra usebench --extra dev --no-install-project; \
   else \
     uv sync --extra dev --no-install-project; \
@@ -36,7 +30,7 @@ RUN --mount=type=ssh \
 
 # Now: Copy in Project source and build wheel
 COPY . /src/
-RUN --mount=type=ssh uv build
+RUN uv build
 
 # venv with system Python, then install the wheel there
 RUN uv venv --python /usr/bin/python3 /opt/venv

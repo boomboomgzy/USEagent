@@ -32,7 +32,7 @@ DOCKER_BUILDKIT=1 docker build --build-arg USEBENCH_ENABLED=false -t useagent-tu
 Build image on top of existing image (useful when running on benchmarks, example script assumes you have a `my.project.to_work_on` image):
 
 ```shell
-DOCKER_BUILDKIT=1 docker build --build-arg BASE_IMAGE=my.project.to_work_on --ssh default -t useagent-turbo:dev .
+DOCKER_BUILDKIT=1 docker build --build-arg BASE_IMAGE=my.project.to_work_on  -t useagent-turbo:dev .
 ```
 
 
